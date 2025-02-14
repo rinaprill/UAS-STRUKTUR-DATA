@@ -1,0 +1,28 @@
+class ListNode {
+    constructor(val, next = null) {
+        this.val = val;
+        this.next = next;
+    }
+}
+
+function reverseList(head) {
+    let prev = null, current = head;
+    
+    while (current !== null) {
+        let nextTemp = current.next;
+        current.next = prev;
+        prev = current;
+        current = nextTemp;
+    }
+    
+    return prev;
+}
+
+const head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+const reversedHead = reverseList(head);
+
+let current = reversedHead;
+while (current !== null) {
+    console.log(current.val); 
+    current = current.next;
+}
